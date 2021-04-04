@@ -5,14 +5,16 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-Parser';
 dotenv.config({ path: __dirname + '/../.env' });
-import authRoutes from './routes/auth';
+import authRoutes from './routes/auth.router';
 import postRoutes from './routes/posts';
 import subRoutes from './routes/subs';
 import miscRoutes from './routes/misc';
 import userRoutes from './routes/user';
 import cors from 'cors';
-//import ormConfig from './ormconfig';
-import ormConfig from './ormconfig.json';
+import ormConfig from './ormconfig';
+//import ormConfig from './ormconfig.json';
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 
 const app = express();
 
@@ -32,6 +34,15 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
   res.send('hello World');
 });
+
+//swagger
+// import swagger_options from './swagger_options';
+// const specs = swaggerJsdoc(swagger_options);
+// app.use(
+//   '/api-docs',
+//   swaggerUi.serve,
+//   swaggerUi.setup(specs, { swaggerOptions: { url: 'swagger.json' } })
+// );
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/subs', subRoutes);
@@ -43,6 +54,7 @@ app.listen(process.env.PORT, async () => {
   try {
     await createConnection(ormConfig as ConnectionOptions);
     //await createConnection();
+    //console.log(con);
 
     console.log(`Connect to Db`);
   } catch (err) {
