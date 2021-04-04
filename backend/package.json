@@ -1,0 +1,45 @@
+{
+  "name": "readit",
+  "version": "0.0.1",
+  "description": "Awesome project developed with TypeORM.",
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/cookie": "^0.4.0",
+    "@types/cookie-parser": "^1.4.2",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/node": "^8.0.29",
+    "nodemon": "^2.0.7",
+    "ts-node": "3.3.0",
+    "typescript": "3.3.3333"
+  },
+  "dependencies": {
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.11",
+    "@types/morgan": "^1.9.2",
+    "@types/multer": "^1.4.5",
+    "bcrypt": "^5.0.0",
+    "class-transformer": "^0.4.0",
+    "class-validator": "^0.13.1",
+    "cookie": "^0.4.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "pg": "^8.4.0",
+    "reflect-metadata": "^0.1.10",
+    "typeorm": "0.2.31",
+    "typeorm-seeding": "^1.6.1"
+  },
+  "scripts": {
+    "start": "ts-node src/server.ts",
+    "dev": "nodemon --exec ts-node src/server.ts",
+    "dbup": "docker-compose -f docker_scripts/postgres-compose.yml up -d",
+    "dbdown": "docker-compose -f docker_scripts/postgres-compose.yml down",
+    "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
+    "build": "tsc -p .",
+    "start:build": "node build/server"
+  }
+}
