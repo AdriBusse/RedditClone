@@ -8,7 +8,7 @@ dotenv.config({ path: __dirname + '/../.env' });
 import authRoutes from './routes/auth.router';
 import postRoutes from './routes/posts';
 import subRoutes from './routes/subs';
-import miscRoutes from './routes/misc';
+import miscRoutes from './routes/misc.router';
 import userRoutes from './routes/user';
 import cors from 'cors';
 import ormConfig from './ormconfig';
