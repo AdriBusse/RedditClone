@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { Controller } from 'tsoa';
 import { getConnection } from 'typeorm';
 import Comment from '../../entities/Comment';
 import { Sub } from '../../entities/Sub';
@@ -7,7 +6,7 @@ import { Post } from '../../entities/Post';
 import User from '../../entities/User';
 import Vote from '../../entities/Vote';
 
-export default class MiscController extends Controller {
+export class MiscController {
   vote = async (req: Request, res: Response) => {
     const { identifier, slug, commentIdentifier, value } = req.body;
 

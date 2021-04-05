@@ -12,9 +12,6 @@ import miscRoutes from './routes/misc.router';
 import userRoutes from './routes/user.router';
 import cors from 'cors';
 import ormConfig from './ormconfig';
-//import ormConfig from './ormconfig.json';
-import swaggerJsdoc from 'swagger-jsdoc';
-import swaggerUi from 'swagger-ui-express';
 
 const app: Application = express();
 
@@ -35,14 +32,6 @@ app.get('/', (req, res) => {
   res.send('hello World');
 });
 
-//swagger
-import swagger_options from './swagger_options';
-const specs = swaggerJsdoc(swagger_options);
-app.use(
-  '/api-docs',
-  swaggerUi.serve,
-  swaggerUi.setup(undefined, { swaggerOptions: { url: './swagger.json' } })
-);
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/subs', subRoutes);

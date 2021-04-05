@@ -1,7 +1,6 @@
 import { isEmpty } from 'class-validator';
 import { Request, Response, NextFunction } from 'express';
 import multer from 'multer';
-import { Controller } from 'tsoa';
 import { getRepository } from 'typeorm';
 import { Sub } from '../../entities/Sub';
 import { Post } from '../../entities/Post';
@@ -9,7 +8,7 @@ import User from '../../entities/User';
 import { makeId } from '../../utils/helpers';
 import path from 'path';
 import fs from 'fs';
-export default class SubsController extends Controller {
+export class SubsController {
   createSub = async (req: Request, res: Response) => {
     const { name, title, describtion } = req.body;
 

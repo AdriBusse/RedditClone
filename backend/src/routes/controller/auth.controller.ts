@@ -1,21 +1,17 @@
 import { validate, isEmpty } from 'class-validator';
 import { Request, Response } from 'express';
-import { Controller, Post, Route, Tags } from 'tsoa';
 import User from '../../entities/User';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import cookie from 'cookie';
 
-@Route('auth')
-@Tags('authentication')
-export default class AuthController extends Controller {
+export class AuthController {
   mapErrors = (errors: Object[]) => {
     return errors.reduce((prev: any, err: any) => {
       prev[err.property] = Object.entries(err.constraints)[0][1];
       return prev;
     }, {});
   };
-  @Post('/register')
   register = async (req: Request, res: Response) => {
     const { email, username, password } = req.body;
 

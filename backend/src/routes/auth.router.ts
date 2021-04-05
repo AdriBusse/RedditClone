@@ -1,7 +1,7 @@
 import trim from '../middleware/trim';
 import auth from '../middleware/auth';
 import user from '../middleware/user';
-import AuthController from './controller/auth.controller';
+import { AuthController } from './controller/auth.controller';
 import { Router } from 'express';
 
 const router = Router();

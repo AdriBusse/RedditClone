@@ -1,10 +1,9 @@
 import { Request, Response } from 'express';
-import { Controller } from 'tsoa';
 import Comment from '../../entities/Comment';
 import User from '../../entities/User';
 import { Post } from '../../entities/Post';
 
-export default class UserController extends Controller {
+export class UserController {
   getUserSubmissions = async (req: Request, res: Response) => {
     try {
       const user = await User.findOneOrFail({

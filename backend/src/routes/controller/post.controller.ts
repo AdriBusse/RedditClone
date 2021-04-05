@@ -1,10 +1,9 @@
 import { Request, Response } from 'express';
-import { Controller } from 'tsoa';
 import Comment from '../../entities/Comment';
 import { Sub } from '../../entities/Sub';
 import { Post } from '../../entities/Post';
 
-export default class PostController extends Controller {
+export class PostController {
   createPost = async (req: Request, res: Response) => {
     const { title, body, sub } = req.body;
 

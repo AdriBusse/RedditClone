@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import auth from '../middleware/auth';
 import user from '../middleware/user';
-import SubsController from './controller/subs.controller';
+import { SubsController } from './controller/subs.controller';
 
 const router = Router();
 const subsController = new SubsController();
