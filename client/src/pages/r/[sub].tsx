@@ -116,6 +116,7 @@ export default function SubPage() {
             {/**Sub MetaData */}
             <div className="h-20 bg-white">
               <div className="container flex pt-1">
+                {console.log(sub.imageUrl)}
                 <Image
                   src={sub.imageUrl}
                   alt="Sub"

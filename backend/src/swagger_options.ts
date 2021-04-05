@@ -22,7 +22,7 @@ const options = {
       },
     ],
   },
-  apis: ['./routes/**/*'],
+  apis: ['./routes/**/*{.ts,.js}'],
 };
 
 export default options;

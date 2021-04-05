@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { ConnectionOptions, createConnection } from 'typeorm';
-import express from 'express';
+import express, { Application } from 'express';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-Parser';
@@ -16,7 +16,7 @@ import ormConfig from './ormconfig';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
-const app = express();
+const app: Application = express();
 
 app.use(express.json());
 app.use(morgan('dev'));
@@ -30,19 +30,19 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/../public'));
 app.get('/', (req, res) => {
   res.send('hello World');
 });
 
 //swagger
-// import swagger_options from './swagger_options';
-// const specs = swaggerJsdoc(swagger_options);
-// app.use(
-//   '/api-docs',
-//   swaggerUi.serve,
-//   swaggerUi.setup(specs, { swaggerOptions: { url: 'swagger.json' } })
-// );
+import swagger_options from './swagger_options';
+const specs = swaggerJsdoc(swagger_options);
+app.use(
+  '/api-docs',
+  swaggerUi.serve,
+  swaggerUi.setup(undefined, { swaggerOptions: { url: './swagger.json' } })
+);
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/subs', subRoutes);

@@ -85,7 +85,7 @@ export default class SubsController extends Controller {
   };
   upload = multer({
     storage: multer.diskStorage({
-      destination: 'public/images',
+      destination: __dirname + '/../../../public/images',
       filename: (req, file, callback) => {
         const name = makeId(15);
         callback(null, name + path.extname(file.originalname)); //e.g udsfhj2jwkascj + .png
@@ -102,8 +102,6 @@ export default class SubsController extends Controller {
   uploadSubImage = async (req: Request, res: Response) => {
     const sub: Sub = res.locals.sub;
     try {
-      console.log(req.file);
-
       const type = req.body.type;
       if (type !== 'image' && type !== 'banner') {
         fs.unlinkSync(req.file.path);
@@ -124,7 +122,7 @@ export default class SubsController extends Controller {
 
       //delete old picture
       if (oldImageUrn !== '') {
-        fs.unlinkSync(`public\\images\\${oldImageUrn}`);
+        fs.unlinkSync(__dirname + `/../../../public/images/${oldImageUrn}`);
       }
       return res.json(sub);
     } catch (error) {

@@ -45,7 +45,8 @@
     "dbup": "docker-compose -f docker_scripts/postgres-compose.yml up -d",
     "dbdown": "docker-compose -f docker_scripts/postgres-compose.yml down",
     "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
-    "build": "tsc -p .",
-    "start:build": "node build/server"
+    "build": "npm run swagger && tsc",
+    "start:build": "node build/server",
+    "swagger": "tsoa spec-and-routes"
   }
 }
